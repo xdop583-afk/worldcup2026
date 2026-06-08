@@ -21,11 +21,15 @@
         .container { display: flex; flex-wrap: wrap; max-width: 1400px; margin: auto; padding: 20px; gap: 20px; }
         
         .crops-section { width: 100%; background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; margin-bottom: 10px; }
-        /* تم التعديل هنا لعرض صورة المحصول بالكامل */
-        .crops-section img { width: 100%; max-height: 350px; object-fit: contain; border-radius: 10px; margin-bottom: 15px; background-color: #f9f9f9; padding: 5px; box-sizing: border-box; }
+        
+        /* تعديل صورة المحاصيل لتملأ المساحة بالكامل */
+        .crops-section img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
         
         .crops-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .crop-item { background: var(--oro-gold); color: var(--primary-brown); padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 1.1em; }
+        
+        .crop-item { background: var(--oro-gold); color: var(--primary-brown); padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 1.1em; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+        .crop-item:hover { transform: scale(1.02); }
+        .crop-item.selected-crop { background: var(--primary-brown); color: var(--oro-gold); border-color: var(--danger); transform: scale(1.05); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
         .menu-area { flex: 1 1 70%; display: flex; gap: 20px; flex-direction: column; }
         .menu-row { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -41,8 +45,9 @@
         .card-list-brown .card { border-top: 4px solid var(--primary-brown); }
 
         .card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        /* تم التعديل هنا لعرض صور المشروبات بالكامل دون قص */
-        .card img { width: 100%; height: 220px; object-fit: contain; background-color: #fafafa; padding: 5px; box-sizing: border-box; }
+        
+        /* تعديل صور المشروبات لتملأ المربع بالكامل بناءً على الصورة المرفقة */
+        .card img { width: 100%; height: 280px; object-fit: cover; display: block; margin: 0; padding: 0; }
         
         .card-content { padding: 12px; }
         .add-btn { width: 100%; background-color: var(--primary-brown); color: var(--oro-gold); border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 5px; }
@@ -66,10 +71,10 @@
     <div class="crops-section">
         <img src="https://images.pexels.com/photos/4264047/pexels-photo-4264047.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="محاصيل القهوة">
         <div class="crops-list">
-            <div class="crop-item">محصول ياباني</div>
-            <div class="crop-item">محصول صيني</div>
-            <div class="crop-item">محصول كوري</div>
-            <div class="crop-item">محصول يمني</div>
+            <div class="crop-item" onclick="toggleCrop(this, 'محصول ياباني')">محصول ياباني</div>
+            <div class="crop-item" onclick="toggleCrop(this, 'محصول صيني')">محصول صيني</div>
+            <div class="crop-item" onclick="toggleCrop(this, 'محصول كوري')">محصول كوري</div>
+            <div class="crop-item" onclick="toggleCrop(this, 'محصول يمني')">محصول يمني</div>
         </div>
     </div>
 
@@ -143,20 +148,36 @@
 
 <script>
     let cart = {}, total = 0, selectedPayment = '';
+    let selectedCrops = []; 
+
+    function toggleCrop(btn, cropName) {
+        if (selectedCrops.includes(cropName)) {
+            selectedCrops = selectedCrops.filter(c => c !== cropName);
+            btn.classList.remove('selected-crop');
+        } else {
+            selectedCrops.push(cropName);
+            btn.classList.add('selected-crop');
+        }
+    }
+
     function toggleCart(btn, name, price) {
         if (cart[name]) { delete cart[name]; total -= price; btn.innerHTML = 'إضافة'; btn.classList.remove('added'); }
         else { cart[name] = price; total += price; btn.innerHTML = 'إلغاء ❌'; btn.classList.add('added'); }
         updateUI();
     }
+    
     function toggleGiftBox() { document.getElementById('gift-box').style.display = document.getElementById('gift-toggle').checked ? 'block' : 'none'; }
+    
     function selectPayment(btn, method) {
         document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected'); selectedPayment = method;
     }
+    
     function updateUI() {
         document.getElementById('cart-items').innerHTML = Object.keys(cart).map(n => `<div style="padding:5px; border-bottom:1px solid #eee">${n}</div>`).join('');
         document.getElementById('total-price').innerText = total;
     }
+    
     function checkout() {
         if (Object.keys(cart).length === 0) return alert("السلة فارغة!");
         if (!selectedPayment) return alert("الرجاء اختيار طريقة الدفع!");
@@ -166,10 +187,15 @@
         
         setTimeout(() => {
             let text = "طلب من ORO NOOK:\n" + Object.keys(cart).join("\n");
-            if(document.getElementById('gift-toggle').checked) {
-                text += "\n--- كرت الهدية ---\n" + document.getElementById('gift-text').value;
+            
+            if (selectedCrops.length > 0) {
+                text += "\n\n--- المحاصيل المختارة ---\n" + selectedCrops.join("، ");
             }
-            text += "\n--- تفاصيل ---\nالدفع: " + selectedPayment;
+
+            if(document.getElementById('gift-toggle').checked) {
+                text += "\n\n--- كرت الهدية ---\n" + document.getElementById('gift-text').value;
+            }
+            text += "\n\n--- تفاصيل ---\nالدفع: " + selectedPayment;
             
             let notes = document.getElementById('notes').value;
             if(notes) { text += "\nملاحظات: " + notes; }
