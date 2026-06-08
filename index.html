@@ -1,15 +1,184 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>توقعات كأس العالم</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORO NOOK | المنيو الكامل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary-brown: #3B2313; 
+            --oro-gold: #D4AF37; 
+            --danger: #A93226; 
+            --bg-color: #FDFBF7; 
+            --white: #ffffff; 
+            --whatsapp: #25D366;
+            --dark-olive: #354B2A; /* اللون الزيتي الغامق الجديد */
+        }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); margin: 0; }
+        nav { background-color: var(--primary-brown); color: var(--oro-gold); padding: 20px; text-align: center; font-size: 28px; font-weight: 900; border-bottom: 3px solid var(--oro-gold); }
+        
+        .container { display: flex; flex-wrap: wrap; max-width: 1400px; margin: auto; padding: 20px; gap: 20px; }
+        
+        /* قسم المحاصيل الجديد */
+        .crops-section { width: 100%; background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; margin-bottom: 10px; }
+        .crops-section img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+        .crops-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .crop-item { background: var(--oro-gold); color: var(--primary-brown); padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 1.1em; }
+
+        .menu-area { flex: 1 1 70%; display: flex; gap: 20px; flex-direction: column; }
+        .menu-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .menu-column { flex: 1; display: flex; flex-direction: column; gap: 15px; min-width: 300px; }
+        
+        .section-title { font-size: 1.8em; color: var(--primary-brown); font-weight: 900; border-right: 5px solid var(--oro-gold); padding-right: 10px; margin-bottom: 10px; }
+        
+        /* ألوان القوائم الجديدة */
+        .sub-title { padding: 8px; text-align: center; border-radius: 5px; font-weight: bold; margin: 15px 0 5px 0; color: var(--oro-gold); }
+        .bg-olive { background: var(--dark-olive); } /* زيتي غامق للمشروبات الحارة والحليب */
+        .bg-brown { background: var(--primary-brown); } /* بني غامق للبارد والحلويات */
+        
+        .card-list-olive .card { border-top: 4px solid var(--dark-olive); }
+        .card-list-brown .card { border-top: 4px solid var(--primary-brown); }
+
+        .card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 160px; object-fit: cover; }
+        .card-content { padding: 12px; }
+        .add-btn { width: 100%; background-color: var(--primary-brown); color: var(--oro-gold); border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 5px; }
+        .add-btn.added { background-color: var(--danger); color: white; }
+        .pay-btn { flex: 1; padding: 8px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; background: white; font-weight: bold; font-size: 0.8em; }
+        .pay-btn.selected { border-color: var(--oro-gold); background: #fcf8e3; }
+        
+        aside { flex: 1 1 25%; background: white; padding: 20px; border-radius: 15px; position: sticky; top: 20px; height: fit-content; border-top: 5px solid var(--oro-gold); }
+        .checkout-btn { width: 100%; background: var(--whatsapp); color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        
+        @media (max-width: 900px) { .menu-row { flex-direction: column; } }
+    </style>
 </head>
 <body>
 
-<h1>🏆 توقعات كأس العالم</h1>
+<nav>ORO NOOK</nav>
 
-<button onclick="alert('السعودية')">🇸🇦 السعودية</button>
-<button onclick="alert('البرازيل')">🇧🇷 البرازيل</button>
+<div class="container">
+    
+    <!-- قسم المحاصيل الجديد -->
+    <div class="crops-section">
+        <img src="https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="محاصيل القهوة">
+        <div class="crops-list">
+            <div class="crop-item">محصول ياباني</div>
+            <div class="crop-item">محصول صيني</div>
+            <div class="crop-item">محصول كوري</div>
+            <div class="crop-item">محصول يمني</div>
+        </div>
+    </div>
 
+    <main class="menu-area">
+        <div class="menu-row">
+            <!-- قسم المشروبات -->
+            <div class="menu-column">
+                <h2 class="section-title">قائمة المشروبات ☕️</h2>
+                
+                <!-- قهوة حارة (زيتي غامق) -->
+                <div class="sub-title bg-olive">قهوة حارة</div>
+                <div class="card-list-olive">
+                    <div class="card"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قهوة حارة"><div class="card-content"><h3>قهوة يوم حار كبير - 15ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'قهوة يوم حار كبير', 15)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قهوة حارة"><div class="card-content"><h3>قهوة يوم حار صغير - 12ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'قهوة يوم حار صغير', 12)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/7362647/pexels-photo-7362647.jpeg?auto=compress&cs=tinysrgb&w=600" alt="V60"><div class="card-content"><h3>V60 حار - 18ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'V60 حار', 18)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/3704420/pexels-photo-3704420.jpeg?auto=compress&cs=tinysrgb&w=600" alt="امريكانو"><div class="card-content"><h3>امريكانو - 14ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'امريكانو', 14)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600" alt="اسبريسو"><div class="card-content"><h3>اسبريسو ألفريدو - 12ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'اسبريسو ألفريدو', 12)">إضافة</button></div></div>
+                </div>
+
+                <!-- بارد (بني غامق) -->
+                <div class="sub-title bg-brown">بارد</div>
+                <div class="card-list-brown">
+                    <div class="card"><img src="https://images.pexels.com/photos/2615323/pexels-photo-2615323.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قهوة يوم بارد"><div class="card-content"><h3>قهوة يوم بارد كبير - 16ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'قهوة يوم بارد كبير', 16)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/2615323/pexels-photo-2615323.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قهوة يوم بارد"><div class="card-content"><h3>قهوة يوم بارد صغير - 14ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'قهوة يوم بارد صغير', 14)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/12079186/pexels-photo-12079186.jpeg?auto=compress&cs=tinysrgb&w=600" alt="آيس دريب كولمبي"><div class="card-content"><h3>آيس دريب (كولمبي) - 22ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'آيس دريب كولمبي', 22)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/12079186/pexels-photo-12079186.jpeg?auto=compress&cs=tinysrgb&w=600" alt="آيس دريب برازيلي"><div class="card-content"><h3>آيس دريب (برازيلي) - 22ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'آيس دريب برازيلي', 22)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/12079186/pexels-photo-12079186.jpeg?auto=compress&cs=tinysrgb&w=600" alt="آيس دريب إثيوبي"><div class="card-content"><h3>آيس دريب (إثيوبي) - 22ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'آيس دريب إثيوبي', 22)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/12079186/pexels-photo-12079186.jpeg?auto=compress&cs=tinysrgb&w=600" alt="آيس دريب صيني"><div class="card-content"><h3>آيس دريب (صيني) - 22ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'آيس دريب صيني', 22)">إضافة</button></div></div>
+                </div>
+
+                <!-- بالحليب (زيتي غامق) -->
+                <div class="sub-title bg-olive">بالحليب</div>
+                <div class="card-list-olive">
+                    <div class="card"><img src="https://images.pexels.com/photos/3002621/pexels-photo-3002621.jpeg?auto=compress&cs=tinysrgb&w=600" alt="كابتشينو"><div class="card-content"><h3>كابتشينو - 17ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'كابتشينو', 17)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/3058030/pexels-photo-3058030.jpeg?auto=compress&cs=tinysrgb&w=600" alt="لاتيه"><div class="card-content"><h3>لاتيه - 17ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'لاتيه', 17)">إضافة</button></div></div>
+                    <div class="card"><img src="https://images.pexels.com/photos/317377/pexels-photo-317377.jpeg?auto=compress&cs=tinysrgb&w=600" alt="فلات وايت"><div class="card-content"><h3>فلات وايت - 16ر.س</h3><button class="add-btn" onclick="toggleCart(this, 'فلات وايت', 16)">إضافة</button></div></div>
+                </div>
+            </div>
+
+            <!-- قسم الحلويات (بني غامق) -->
+            <div class="menu-column">
+                <h2 class="section-title">الحلويات 🍰</h2>
+                <div class="sub-title bg-brown">حلى</div>
+                <div class="card-list-brown">
+                    <div class="card"><img src="https://images.pexels.com/photos/4655031/pexels-photo-4655031.jpeg?auto=compress&cs=tinysrgb&w=600" alt="كيكة الشوكولاتة"><div class="card-content"><h3>كيكة الشوكولاتة</h3><button class="add-btn" onclick="toggleCart(this, 'كيكة الشوكولاتة', 24)">إضافة 24ر.س</button></div></div>
+                    
+                    <div class="card"><img src="https://images.pexels.com/photos/9957547/pexels-photo-9957547.jpeg?auto=compress&cs=tinysrgb&w=600" alt="تشيز مانجو وتوت"><div class="card-content"><h3>تشيز المانجو والتوت</h3><button class="add-btn" onclick="toggleCart(this, 'تشيز المانجو والتوت', 26)">إضافة 26ر.س</button></div></div>
+                    
+                    <div class="card"><img src="https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=600" alt="قطع براونيز"><div class="card-content"><h3>قطع براونيز</h3><button class="add-btn" onclick="toggleCart(this, 'قطع براونيز', 18)">إضافة 18ر.س</button></div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+        <h3>سلة الطلبات 🛒</h3>
+        <div id="cart-items">السلة فارغة</div>
+        <div style="font-weight:bold; margin:15px 0;">الإجمالي: <span id="total-price">0</span> ر.س</div>
+        <label><input type="checkbox" id="gift-toggle" onchange="toggleGiftBox()"> كرت هدية 🎁</label>
+        <div id="gift-box" style="display:none; margin-top:10px;"><textarea id="gift-text" placeholder="اكتب نص الكرت..." style="width:100%; height:40px;"></textarea></div>
+        <p>طريقة الدفع:</p>
+        <div style="display:flex; gap:5px;">
+            <button class="pay-btn" onclick="selectPayment(this, ' Apple Pay')"> Apple Pay</button>
+            <button class="pay-btn" onclick="selectPayment(this, '💳 Visa')">💳 Visa</button>
+            <button class="pay-btn" onclick="selectPayment(this, '💵 Cash')">💵 Cash</button>
+        </div>
+        <textarea id="notes" placeholder="ملاحظاتك..." style="width:100%; height:50px; margin-top:10px;"></textarea>
+        <button class="checkout-btn" onclick="checkout()">إرسال الطلب عبر واتساب</button>
+    </aside>
+</div>
+
+<script>
+    let cart = {}, total = 0, selectedPayment = '';
+    function toggleCart(btn, name, price) {
+        if (cart[name]) { delete cart[name]; total -= price; btn.innerHTML = 'إضافة'; btn.classList.remove('added'); }
+        else { cart[name] = price; total += price; btn.innerHTML = 'إلغاء ❌'; btn.classList.add('added'); }
+        updateUI();
+    }
+    function toggleGiftBox() { document.getElementById('gift-box').style.display = document.getElementById('gift-toggle').checked ? 'block' : 'none'; }
+    function selectPayment(btn, method) {
+        document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected'); selectedPayment = method;
+    }
+    function updateUI() {
+        document.getElementById('cart-items').innerHTML = Object.keys(cart).map(n => `<div style="padding:5px; border-bottom:1px solid #eee">${n}</div>`).join('');
+        document.getElementById('total-price').innerText = total;
+    }
+    function checkout() {
+        if (Object.keys(cart).length === 0) return alert("السلة فارغة!");
+        if (!selectedPayment) return alert("الرجاء اختيار طريقة الدفع!");
+        
+        const msg = new SpeechSynthesisUtterance("عَليْكَ بالعَافية مُقَدَّماً");
+        msg.lang = 'ar-SA'; window.speechSynthesis.speak(msg);
+        
+        setTimeout(() => {
+            // استخدام \n لتنسيق الأسطر وتشفيرها بشكل آمن بدلاً من %0A
+            let text = "طلب من ORO NOOK:\n" + Object.keys(cart).join("\n");
+            if(document.getElementById('gift-toggle').checked) {
+                text += "\n--- كرت الهدية ---\n" + document.getElementById('gift-text').value;
+            }
+            text += "\n--- تفاصيل ---\nالدفع: " + selectedPayment;
+            
+            let notes = document.getElementById('notes').value;
+            if(notes) { text += "\nملاحظات: " + notes; }
+            
+            // تحويل النص بشكل آمن ليتوافق مع الرابط
+            const safeText = encodeURIComponent(text);
+            window.location.href = "https://wa.me/966550341704?text=" + safeText;
+            
+        }, 1500);
+    }
+</script>
 </body>
 </html>
